@@ -1,3 +1,5 @@
+@import 'node_modules/react-modal-video/scss/modal-video.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +7,19 @@
   a {
     text-decoration: none;
   }
-  li{
+  li {
     list-style: none;
   }
   scroll-behavior: smooth;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 96px;
+}
+.titleh2{
+  font-size: 32px;
+  line-height: 120%;
+  padding-bottom: 24px;
+  color: #404145;
 }

@@ -1,0 +1,43 @@
+.marketplace {
+  .content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 55px;
+    margin-top: 40px;
+    .item {
+      a {
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #222325;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 53px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 48px;
+          height: 2px;
+          background-color: #c5c6c9;
+          transition: all 0.3s linear;
+        }
+        img {
+          width: 48px;
+          height: 48px;
+        }
+        p {
+          margin-top: 15px;
+        }
+        &:hover {
+          &::after {
+            background-color: #1dbf73;
+            width: 90px;
+          }
+        }
+      }
+    }
+  }
+}
