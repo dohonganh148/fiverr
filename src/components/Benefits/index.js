@@ -48,7 +48,7 @@ const Benefits = () => {
           </div>
           <div className={styles.col2}>
               <img alt="" src={Benefit} />
-              <button onClick={() => setIsOpen(true)}><BsFillCaretRightFill /></button>
+              <button className="btnVideo" onClick={() => setIsOpen(true)}><BsFillCaretRightFill /></button>
           </div>
         </div>
         <ModalVideo

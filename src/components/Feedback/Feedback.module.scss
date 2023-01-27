@@ -1,0 +1,37 @@
+.feedback{
+    .content{
+        display: flex;
+        align-items: center;
+        column-gap: 64px;
+        .col1{
+            position: relative;
+            img{
+                width: 100%;
+                border-radius: 4px;
+            }
+        }
+        .col2{
+            padding-right: 48px;
+            .title{
+                display: flex;
+                align-items: center;
+                h5{
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: #74767e;
+                    line-height: 140%;
+                }
+                img{
+                    height: 36px;
+                    margin-left: 10px;
+                }
+            }
+            p{
+                font-size: 26px;
+                line-height: 40px;
+                margin-top: 20px;
+                font-style: italic;
+            }
+        }
+    }
+}

@@ -1,0 +1,117 @@
+.footer{
+    border-top: 1px solid #e4e5e7;
+    padding-top: 64px;
+    .content{
+        .top{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border-bottom: 1px solid #e4e5e7;
+            padding-bottom: 40px;
+            h6{
+                color: #404145;
+                font-size: 16px;
+                line-height: 140%;
+                padding-bottom: 20px;
+            }
+            .col{
+                padding-bottom: 16px;
+                .detail{
+                    display: inline-block;
+                    color: #74767e;
+                    border-bottom: 1px solid transparent;
+                    &:hover{
+                        border-bottom: 1px solid #5e5f63;
+                    }
+                }
+                .desc{
+                    color: #b5b6ba;
+                    font-size: 14px;
+                    display: block;
+                    &:hover{
+                        color: rgb(64, 224, 157);
+                    }
+                }
+            }
+        }
+        .bot{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            color: #62646a;
+            .left{
+                display: flex;
+                align-items: center;
+                h1{
+                    color: #74767e;
+                    font-weight: bold;
+                    padding-right: 30px;
+                    font-size: 26px;
+                    span{
+                        font-size: 12px;
+                    }
+                }
+                p{
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+            }
+            .right{
+                display: flex;
+                align-items: center;
+                button{
+                    border: none;
+                    cursor: pointer;
+                    background-color: transparent;
+                    padding: 8px;
+                    color: #62646a;
+                    svg{
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+                .socials{
+                    button{
+                        margin-right: 8px;
+                        &:hover{
+                            background-color: #efeff0;
+                            border-radius: 50%;
+                        }
+                    }
+                    padding-right: 8px;
+                }
+                .setting{
+                    display: flex;
+                    align-items: center;
+                    button{
+                        &:hover{
+                            background-color: #efeff0;
+                            border-radius: 54px;
+                        }
+                    }
+                    .language{
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 12px;
+                        p{
+                            margin-left: 5px;
+                            font-size: 15px;
+                        }
+                    }
+                    .usd{
+                        padding: 8px 12px;
+                        font-size: 15px;
+                    }
+                    .user{
+                        padding: 8px 12px;
+                        svg{
+                            width: 26px;
+                            height: 26px;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
