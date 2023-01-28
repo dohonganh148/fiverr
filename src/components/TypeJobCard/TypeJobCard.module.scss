@@ -1,0 +1,39 @@
+.typeJob{
+    .content{
+        img{
+            width: 100%;
+            border-radius: 4px;
+            filter: opacity(1);
+            transition: all .3s linear;
+        }
+        .item{
+            display: flex;
+            align-items: center;
+            margin: 10px 0 20px 0;
+            p{
+                color: #74767e;
+                font-weight: bold;
+                transition: all .3s linear;
+                padding-right: 5px;
+            }
+            button{
+                color: #ff62ad;
+                border: 1px solid #ff62ad;
+                background-color: transparent;
+                padding: 2px 5px;
+                border-radius: 12px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+        
+        &:hover{
+            img{
+                filter: opacity(.85);
+            }
+            p{
+                color: #1dbf73;
+            }
+        }
+    }
+}

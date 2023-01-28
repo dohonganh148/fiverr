@@ -204,7 +204,7 @@ const Footer = () => {
   ];
   return (
     <div className={styles.footer}>
-      <div className="container">
+      <div className={`container ${styles.footerContainer}`}>
         <div className={styles.content}>
           <div className={styles.top}>
             {items.map((item, index) => (

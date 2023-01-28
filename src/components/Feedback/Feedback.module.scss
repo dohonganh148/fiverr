@@ -1,13 +1,18 @@
 .feedback{
+    .arrow {
+        display: block;
+    }
     .content{
-        display: flex;
-        align-items: center;
+        display: flex !important;
+        align-items: center !important;
         column-gap: 64px;
+        overflow: hidden;
         .col1{
             position: relative;
             img{
-                width: 100%;
+                width: auto;
                 border-radius: 4px;
+                height: 290px;
             }
         }
         .col2{

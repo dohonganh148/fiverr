@@ -1,0 +1,111 @@
+.jobCard {
+  background-color: #fff;
+  border: 1px solid #e4e5e7;
+  width: 100%;
+  margin-bottom: 20px;
+  .content {
+    .image {
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+    .desc {
+      padding: 12px;
+      .title {
+        display: flex;
+        align-items: center;
+        padding-bottom: 8px;
+        .avatar {
+          img {
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+          }
+          padding-right: 8px;
+        }
+        .name {
+          a {
+            color: #222325;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: bold;
+          }
+          p {
+            font-size: 14px;
+            color: #74767e;
+            line-height: 21px;
+          }
+        }
+      }
+      h3 {
+        a {
+          font-size: 16px;
+          line-height: 130%;
+          color: #222325;
+          cursor: pointer;
+          height: 43px;
+          padding: 5px 0;
+          font-weight: 400;
+          transition: all .3s linear;
+        }
+      }
+      .infor {
+        padding: 10px 0;
+        font-size: 14px;
+        color: #b5b6ba;
+        display: flex;
+        align-items: center;
+        .star {
+          display: flex;
+          align-items: center;
+          margin-right: 5px;
+          color: #ffbe5b;
+          font-weight: bold;
+          p {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      color: #74767e;
+      border-top: 1px solid #efeff0;
+      svg {
+        color: #b5b6ba;
+        cursor: pointer;
+      }
+      .starting {
+        display: flex;
+        align-items: center;
+        .small {
+          color: #74767e;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          padding-right: 6px;
+        }
+        .big{
+            font-size: 18px;
+            line-height: 20px;
+            color: #404145;
+        }
+      }
+    }
+  }
+  &:hover{
+      .content{
+          .desc{
+              h3{
+                  a{
+                    color: #1dbf73;
+                  }
+              }
+          }
+      }
+  }
+}

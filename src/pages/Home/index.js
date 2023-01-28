@@ -6,7 +6,6 @@ import Benefits from "components/Benefits";
 import Marketplace from "components/Marketplace";
 import Solutions from "components/Solutions";
 import Feedback from "components/Feedback";
-import Footer from "components/Footer";
 
 const Home = () => {
   return (
@@ -18,7 +17,6 @@ const Home = () => {
         <Marketplace />
         <Solutions />
         <Feedback />
-        <Footer />
     </div>
   )
 }

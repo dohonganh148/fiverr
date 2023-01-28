@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Banner.module.scss";
 import BgGarb from "images/bgGarb.webp";
 import { FaStar } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getJobList } from "redux/actions/home";
 const Banner = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [searchData, setSearchData] = useState("");
   const popularSearch = [
     {
       label: "Website Design",
@@ -19,6 +24,10 @@ const Banner = () => {
       label: "Video Editing",
     },
   ];
+  const handleSearch = (e) => {
+    dispatch(getJobList(searchData));
+    navigate("/joblist");
+  };
   return (
     <div
       className={styles.banner}
@@ -29,10 +38,17 @@ const Banner = () => {
           <h1>
             Find the perfect <span>freelancer</span> service for your business
           </h1>
-          <form className={styles.form}>
-              <span><AiOutlineSearch /></span>
-              <input type="search" placeholder='Try "building mobile app"' />
-              <button type="submit">Search</button>
+          <form className={styles.form} onSubmit={handleSearch}>
+            <span>
+              <AiOutlineSearch />
+            </span>
+            <input
+              type="search"
+              placeholder='Try "building mobile app"'
+              value={searchData}
+              onChange={(e) => setSearchData(e.target.value)}
+            />
+            <button type="submit">Search</button>
           </form>
           <div className={styles.popular}>
             <p>Popular:</p>
