@@ -4,11 +4,8 @@ import BgGarb from "images/bgGarb.webp";
 import { FaStar } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getJobList } from "redux/actions/home";
 const Banner = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [searchData, setSearchData] = useState("");
   const popularSearch = [
     {
@@ -25,8 +22,7 @@ const Banner = () => {
     },
   ];
   const handleSearch = (e) => {
-    dispatch(getJobList(searchData));
-    navigate("/joblist");
+    navigate(`/joblist?search=${searchData}`);
   };
   return (
     <div

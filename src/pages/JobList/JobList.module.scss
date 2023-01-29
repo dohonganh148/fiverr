@@ -1,36 +1,6 @@
 .jobList {
   padding-top: 125px;
-  .suggest {
-    border-bottom: 1px solid #dadbdd;
-    background-color: #f5f5f5;
-    .contentSuggest {
-      width: 90%;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      h3 {
-        font-size: 15px;
-        padding: 0 16px;
-        color: #62646a;
-      }
-      a {
-        display: inline-block;
-        background-color: #fff;
-        border: 1px solid #dadbdd;
-        font-size: 13px;
-        color: #62646a;
-        padding: 6px 10px;
-        margin: 15px 10px 15px 0;
-        border-radius: 3px;
-        transition: all 0.3s linear;
-        &:hover {
-          background-color: #efeff0;
-          color: #62646a;
-          border: 1px solid #95979d;
-        }
-      }
-    }
-  }
+
   .results {
     width: 90%;
     margin: 0 auto;
@@ -41,50 +11,6 @@
       line-height: 150%;
     }
     .filterBar {
-      .filter {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .left {
-          display: flex;
-          margin: 16px 0;
-          button {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: #222325;
-            font-size: 16px;
-            font-weight: 550;
-            border: 1px solid #dadbdd;
-            border-radius: 4px;
-            padding: 6px 12px;
-            background-color: #fff;
-            margin-right: 12px;
-            cursor: pointer;
-            svg {
-              width: 16px;
-              height: 16px;
-              color: #74767e;
-            }
-          }
-        }
-        .right {
-          display: flex;
-          align-items: center;
-          p {
-            margin-left: 32px;
-            color: #62646a;
-            font-weight: 600;
-            cursor: pointer;
-            span {
-              margin-left: 10px;
-            }
-          }
-        }
-      }
-      :global(.ant-switch-checked) {
-        background-color: #1dbf73;
-      }
       .result {
         display: flex;
         justify-content: space-between;
@@ -125,8 +51,10 @@
       gap: 32px;
     }
   }
-  .page{
-      width: 30%;
-      margin: 20px auto;
+  .page {
+    margin: 20px auto;
+    > ul {
+      text-align: center;
+    }
   }
 }

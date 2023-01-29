@@ -2,8 +2,10 @@ import React from "react";
 import styles from "./JobCard.module.scss";
 import { FaStar, FaHeart } from "react-icons/fa";
 import { Dropdown } from "antd";
+import { Link } from "react-router-dom";
 
-const JobCard = () => {
+const JobCard = (props) => {
+  const { image, name, rating, price } = props;
   const item1 = [
     {
       key: "1",
@@ -25,7 +27,10 @@ const JobCard = () => {
           <a href="#home">
             <img
               alt=""
-              src="https://fiverr-res.cloudinary.com/t_gig_cards_web_x2,q_auto,f_auto/gigs/3763945/original/Untitled-1.jpg"
+              src={
+                image ||
+                "https://fiverr-res.cloudinary.com/t_gig_cards_web_x2,q_auto,f_auto/gigs/3763945/original/Untitled-1.jpg"
+              }
             />
           </a>
         </div>
@@ -39,7 +44,7 @@ const JobCard = () => {
             </div>
             <div className={styles.name}>
               <div>
-                <a href="#home">maverickabhi</a>
+                <Link to="/jobdetail">maverickabhi</Link>
               </div>
               <Dropdown
                 menu={{
@@ -54,13 +59,13 @@ const JobCard = () => {
           </div>
           <h3>
             <a href="#home">
-              I will fix your html, css, jquery, wordpress issues
+             {name}
             </a>
           </h3>
           <div className={styles.infor}>
             <div className={styles.star}>
               <FaStar />
-              <p>5.0</p>
+              <p>{rating}</p>
             </div>
             <p>(1k+)</p>
           </div>
@@ -77,7 +82,7 @@ const JobCard = () => {
           </Dropdown>
           <div className={styles.starting}>
             <p className={styles.small}>STARTING AT</p>
-            <p className={styles.big}>$5</p>
+            <p className={styles.big}>${price}</p>
           </div>
         </footer>
       </div>

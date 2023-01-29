@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
-import { Link} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { getJobTypes } from "redux/actions/home";
 
 const menu = [
   {
@@ -25,66 +27,50 @@ const menu = [
     link: "/login",
   },
 ];
-const submenu = [
-  {
-    label: "Graphics & Design",
-    link: "#home",
-  },
-  {
-    label: "Video & Animation",
-    link: "#home",
-  },
-  {
-    label: "Writing & Translation",
-    link: "#home",
-  },
-  {
-    label: "AI Services",
-    link: "#home",
-    isNew: true,
-  },
-  {
-    label: "Digital Marketing",
-    link: "#home",
-  },
-  {
-    label: "Music & Audio",
-    link: "#home",
-  },
-  {
-    label: "Programming & Tech",
-    link: "/category",
-  },
-  {
-    label: "Business",
-    link: "#home",
-  },
-  {
-    label: "Lifestyle",
-    link: "#home",
-  },
-];
 
 const Header = () => {
   const [isActive, setIsActive] = useState(true);
   const [showSubMenu, setShowSubMenu] = useState(true);
+  const jobTypes = useSelector((state) => state.home.jobTypes);
+  const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener("scroll", changeStyle);
     return () => {
       window.removeEventListener("scroll", changeStyle);
     };
   });
+  const { search, pathname } = useLocation();
+  const query = new URLSearchParams(search).get("search");
+  useEffect(() => {
+    dispatch(getJobTypes());
+    setSearchData(query);
+  }, [dispatch, query]);
+  useEffect(() => {
+    if (pathname === "/") {
+      setIsActive(false);
+      setShowSubMenu(false);
+    } else {
+      setIsActive(true);
+      setShowSubMenu(true);
+    }
+  }, [pathname]);
   const changeStyle = () => {
     if (window.scrollY >= 60) {
       setIsActive(true);
       if (window.scrollY >= 100) {
         setShowSubMenu(true);
       }
+    } else {
+      if (pathname === "/") {
+        setIsActive(false);
+        setShowSubMenu(false);
+      }
     }
-    // } else {
-    //   setIsActive(false);
-    //   setShowSubMenu(false);
-    // }
+  };
+  const navigate = useNavigate();
+  const [searchData, setSearchData] = useState();
+  const handleSearch = () => {
+    navigate(`/joblist?search=${searchData}`);
   };
   return (
     <div
@@ -99,15 +85,17 @@ const Header = () => {
           </a>
         </div>
         {isActive && (
-          <form className={styles.form}>
+          <div className={styles.form}>
             <input
               type="search"
               placeholder="What service are you looking for today?"
+              value={searchData}
+              onChange={(e) => setSearchData(e.target.value)}
             />
-            <button type="submit">
+            <button onClick={handleSearch}>
               <AiOutlineSearch />
             </button>
-          </form>
+          </div>
         )}
         <nav className={styles.navbar}>
           {menu.map((item, index) => (
@@ -123,11 +111,11 @@ const Header = () => {
 
       <div className={showSubMenu ? styles.subMenuActive : styles.subMenu}>
         <div className={styles.row}>
-          {submenu.map((item, index) => (
+          {jobTypes?.slice(0, 9)?.map((item, index) => (
             <p key={index}>
-              <Link to={item.link}>
-                {item.label}
-                {item?.isNew && <span className={styles.btnNew}>New</span>}
+              <Link to={`/category/${item._id}`}>
+                {item.name}
+                {/* {item?.isNew && <span className={styles.btnNew}>New</span>} */}
               </Link>
             </p>
           ))}

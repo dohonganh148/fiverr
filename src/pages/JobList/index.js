@@ -1,108 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./JobList.module.scss";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { Switch, Dropdown } from "antd";
 import JobCard from "components/JobCard";
-import { Pagination } from 'antd';
-
+import { Pagination } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { getJobList } from "redux/actions/home";
+import { useLocation } from "react-router-dom";
+import Suggest from "components/Suggest";
+import FilterBar from "components/FilterBar";
 const JobList = () => {
-  const btnFilter = [
-    {
-      content: "Category",
-    },
-    {
-      content: "Service Options",
-    },
-    {
-      content: "Seller Details",
-    },
-    {
-      content: "Budget",
-    },
-    {
-      content: "Delivery Time",
-    },
-  ];
-  const switchBtn = [
-    {
-      title: "Pro services",
-      desc: [
-        {
-          key: "1",
-          label: (
-            <div>Vetted professionals, verified for quality and service.</div>
-          ),
-        },
-      ],
-    },
-    {
-      title: "Local sellers",
-      desc: [
-        {
-          key: "2",
-          label: <div>Sellers from your country.</div>,
-        },
-      ],
-    },
-    {
-      title: "Online sellers",
-      desc: [
-        {
-          key: "3",
-          label: <div>Sellers who are connected to Fiverr right now.</div>,
-        },
-      ],
-    },
-  ];
-
-  const onChange = (checked) => {
-    console.log(`switch to ${checked}`);
-  };
+  const jobList = useSelector((state) => state.home.jobs);
+  const [current, setCurrent] = useState(1);
+  const dispatch = useDispatch();
+  const { search } = useLocation();
+  const query = new URLSearchParams(search).get("search");
+  useEffect(() => {
+    dispatch(getJobList(query));
+  }, [dispatch, query]);
   return (
     <div className={styles.jobList}>
-      <div className={styles.suggest}>
-        <div className={styles.contentSuggest}>
-          <h3>Suggested</h3>
-          <div className={styles.rowBtn}>
-            <a href="#home">Website development</a>
-          </div>
-        </div>
-      </div>
+      <Suggest />
       <div className={styles.results}>
-        <h1>Results for "html"</h1>
+        <h1>Results for "{query}"</h1>
         <div className={styles.filterBar}>
-          <div className={styles.filter}>
-            <div className={styles.left}>
-              {btnFilter.map((item, index) => (
-                <div key={index}>
-                  <button>
-                    <div>{item.content}</div>
-                    <MdOutlineKeyboardArrowDown />
-                  </button>
-                </div>
-              ))}
-            </div>
-            <div className={styles.right}>
-              {switchBtn.map((item, index) => (
-                <div key={index}>
-                  <Dropdown
-                    menu={{ items: item.desc }}
-                    placement="bottom"
-                    arrow
-                  >
-                    <p>
-                      <Switch
-                        style={{ width: 31 }}
-                        size="small"
-                        onChange={onChange}
-                      />
-                      <span>{item.title}</span>
-                    </p>
-                  </Dropdown>
-                </div>
-              ))}
-            </div>
-          </div>
+          <FilterBar />
           <div className={styles.result}>
             <p>30,147 services available</p>
             <h4>
@@ -117,15 +38,21 @@ const JobList = () => {
         </div>
         <div className={styles.content}>
           <div className={styles.row}>
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
+            {jobList
+              ?.slice(0 + 12 * (current - 1), 12 * current)
+              .map((item, index) => (
+                <JobCard {...item} />
+              ))}
           </div>
         </div>
       </div>
       <div className={styles.page}>
-      <Pagination defaultCurrent={1} total={50} />
+        <Pagination
+          defaultCurrent={1}
+          pageSize={12}
+          total={jobList?.length}
+          onChange={(e) => setCurrent(e)}
+        />
       </div>
     </div>
   );
