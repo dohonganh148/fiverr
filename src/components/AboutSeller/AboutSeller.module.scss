@@ -1,0 +1,105 @@
+.aboutSeller {
+  .content {
+    .thisSeller {
+      font-size: 20px;
+      line-height: 28px;
+      padding-bottom: 25px;
+      color: #404145;
+      margin-top: 60px;
+    }
+    .profile {
+      display: flex;
+      padding-bottom: 24px;
+      color: #62646a;
+      font-size: 16px;
+      line-height: 130%;
+      .avatar {
+        width: 110px;
+        height: 110px;
+        font-size: 30px;
+        position: relative;
+        img {
+          border-radius: 50%;
+          display: block;
+          height: 100%;
+          position: absolute;
+          width: 100%;
+          z-index: 1;
+        }
+        a {
+          background-image: url("https://fiverr-res.cloudinary.com/npm-assets/@fiverr/gig_page_perseus/badges_english.cf7a2dc.svg");
+          background-repeat: no-repeat;
+          background-size: 400%;
+          background-position-x: -40px;
+          border-radius: 50%;
+          bottom: 0;
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          overflow: hidden;
+          position: absolute;
+          right: 0;
+          z-index: 7;
+        }
+      }
+      .infor{
+          padding-left: 15px;
+          .rate{
+              padding-top: 5px;
+              display: flex;
+              align-items: flex-end;
+              line-height: 21px;
+              .rating{
+                  font-size: 14px;
+                  font-weight: 700;
+                  color: #ffb33e;
+              }
+              .comment{
+                  font-size: 14px;
+                  padding-left: 3px;
+              }
+          }
+          :global(.ant-rate-star) {
+            margin-inline-end: 5px;
+            margin-bottom: 2px;
+          }
+          .contact{
+              margin-top: 20px;
+              button{
+                  font-size: 14px;
+                  font-weight: 600;
+                  padding: 12px 24px;
+                  background-color: transparent;
+                  border: 1px solid #62646a;
+                  border-radius: 4px;
+                  transition: all .3s linear;
+                  color: #62646a;
+                  cursor: pointer;
+                  &:hover{
+                      background-color: #62646a;
+                      border-color: transparent;
+                      color: #fff;
+                  }
+              }
+          }
+      }
+    }
+  }
+  .faq {
+    margin-top: 30px;
+    color: #404145;
+    h2{
+        padding-bottom: 5px;
+        font-size: 20px;
+    }
+    :global(.ant-collapse-header) {
+        font-size: 16px;
+        font-weight: 600;
+        .ant-collapse-header-text{
+            color: #62646a;
+            padding: 20px 0;
+        }
+      }
+  }
+  
+}

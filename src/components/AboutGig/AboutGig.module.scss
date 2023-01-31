@@ -1,0 +1,54 @@
+.aboutGig {
+  .content {
+    color: #62646a;
+    border-bottom: 1px solid #e4e5e7;
+    h2 {
+      padding-bottom: 25px;
+      font-size: 20px;
+      line-height: 28px;
+      color: #404145;
+    }
+    h3{
+        font-size: 16px;
+        padding-bottom: 24px;
+        u{
+            background-color: #ffecd1;
+            text-decoration: none;
+        }
+    }
+    p{
+        margin-bottom: 24px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    h4{
+        margin: 15px 0 10px;
+    }
+    li{
+        margin-left: 30px;
+        margin-bottom: 5px;
+        list-style: disc;
+    }
+    h4{
+        span{
+            font-weight: 400;
+        }
+    }
+  }
+  .bottom{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-top: 24px;
+      h5{
+          font-weight: 400;
+          color: #95979d;
+          font-size: 16px;
+          margin-bottom: 5px;
+      }
+      p{
+          color: #62646a;
+          line-height: 24px;
+      }
+  }
+}

@@ -5,7 +5,7 @@ import { Dropdown } from "antd";
 import { Link } from "react-router-dom";
 
 const JobCard = (props) => {
-  const { image, name, rating, price } = props;
+  const { image, name, rating, price, _id } = props;
   const item1 = [
     {
       key: "1",
@@ -24,7 +24,7 @@ const JobCard = (props) => {
     <div className={styles.jobCard}>
       <div className={styles.content}>
         <div className={styles.image}>
-          <a href="#home">
+          <Link to={`/jobdetail/${_id}`}>
             <img
               alt=""
               src={
@@ -32,7 +32,7 @@ const JobCard = (props) => {
                 "https://fiverr-res.cloudinary.com/t_gig_cards_web_x2,q_auto,f_auto/gigs/3763945/original/Untitled-1.jpg"
               }
             />
-          </a>
+          </Link>
         </div>
         <div className={styles.desc}>
           <div className={styles.title}>
@@ -44,7 +44,7 @@ const JobCard = (props) => {
             </div>
             <div className={styles.name}>
               <div>
-                <Link to="/jobdetail">maverickabhi</Link>
+                <Link to="/profile">maverickabhi</Link>
               </div>
               <Dropdown
                 menu={{
@@ -58,9 +58,7 @@ const JobCard = (props) => {
             </div>
           </div>
           <h3>
-            <a href="#home">
-             {name}
-            </a>
+            <Link to={`/jobdetail/${_id}`}>{name}</Link>
           </h3>
           <div className={styles.infor}>
             <div className={styles.star}>
