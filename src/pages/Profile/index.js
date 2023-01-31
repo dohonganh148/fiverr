@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import s from "./Profile.module.scss";
+import CardProfile from "components/CardProfile";
+import CardJobBooked from "components/CardJobBooked";
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div className={s.profile}>
+      <div className={s.content}>
+      <CardProfile />
+      <CardJobBooked />
+      </div>
+    </div>
   )
 }
 

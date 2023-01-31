@@ -1,0 +1,190 @@
+.cardProfile {
+  .infor {
+    padding: 30px;
+    margin-bottom: 32px;
+    border: 1px solid #dadbdd;
+    font-size: 14px;
+    line-height: 130%;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 16px;
+      .heart {
+        svg {
+          color: #b5b6ba;
+          width: 20px;
+          height: 20px;
+        }
+      }
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      button {
+        display: flex;
+        align-items: center;
+        border: 1px solid #1dbf73;
+        border-radius: 12px;
+        color: #1dbf73;
+        margin-bottom: 5px;
+        padding: 3px 6px;
+        background-color: transparent;
+      }
+    }
+    .name {
+      h3 {
+        text-align: center;
+        a {
+          font-size: 20px;
+          font-weight: 700;
+          color: #222325;
+          text-align: center;
+          padding-bottom: 10px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      > div {
+        text-align: center;
+        padding: 10px 0;
+        svg {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+          color: #62646a;
+        }
+      }
+      button {
+        border: none;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 10px 0;
+        border-radius: 4px;
+        a {
+          color: #fff;
+        }
+      }
+    }
+    .about {
+      margin-top: 24px;
+      border-top: 1px solid #dadbdd;
+      padding-top: 20px;
+      .col {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        .colLeft {
+          display: flex;
+          align-items: center;
+          color: #62646a;
+          svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+          }
+        }
+        .colRight {
+          font-weight: bold;
+          color: #62646a;
+        }
+      }
+    }
+  }
+  .detail {
+    padding: 30px;
+    border: 1px solid #dadbdd;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      h3 {
+        font-size: 16px;
+        line-height: 140%;
+        color: #404145;
+      }
+      button {
+        background-color: transparent;
+        border: 1px solid #1dbf73;
+        color: #1dbf73;
+        padding: 2px 8px;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+    }
+    .description {
+      padding-bottom: 30px;
+      border-bottom: 1px solid #dadbdd;
+      p {
+        color: #62646a;
+        line-height: 24px;
+      }
+    }
+    .language {
+      margin-top: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #dadbdd;
+      p {
+        color: #62646a;
+        line-height: 24px;
+        span {
+          color: #b5b6ba;
+        }
+      }
+    }
+    .linkAccount {
+      margin-top: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #dadbdd;
+      .links {
+        p {
+          color: #1d69bf;
+          cursor: pointer;
+          padding-bottom: 10px;
+        }
+      }
+    }
+    .skills {
+      margin-top: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #dadbdd;
+      .skillList{
+        button {
+            background-color: transparent;
+            display: inline-block;
+            border-radius: 15px;
+            min-width: 40px;
+            text-align: center;
+            padding: 5px 12px;
+            margin: 0 10px 10px 0;
+            border: 1px solid #e4e5e7;
+            cursor: pointer;
+            font-size: 16px;
+            color: #62646a;
+            transition: all .2s linear;
+            &:hover{
+                background-color: #f5f5f5;
+            }
+          }
+      }
+      
+    }
+    .education{
+        margin-top: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #dadbdd;
+      p{
+          color: #b5b6ba;
+      }
+    }
+    .certification{
+        margin-top: 30px;
+      p{
+          color: #b5b6ba;
+      }
+    }
+  }
+}

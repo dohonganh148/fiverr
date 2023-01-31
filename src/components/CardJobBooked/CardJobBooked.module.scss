@@ -1,0 +1,106 @@
+.content {
+  .service {
+    margin-bottom: 30px;
+    padding: 30px;
+    border: 1px solid #dadbdd;
+    h4 {
+      font-size: 16px;
+      line-height: 140%;
+      color: #404145;
+      padding-bottom: 5px;
+      span {
+        color: #62646a;
+        font-weight: 400;
+      }
+    }
+    >div{
+        color: #1dbf73;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        svg{
+            width: 20px;
+            height: 20px;
+            margin-top: 3px;
+            margin-left: 5px;
+        }
+    }
+  }
+  .create{
+    margin-bottom: 40px;
+    padding: 30px;
+    border: 1px solid #dadbdd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p{
+        color: #62646a;
+        font-weight: 600;
+    }
+    button{
+        border: none;
+        padding: 10px 16px;
+        border-radius: 4px;
+        a{
+            color: #fff;
+            font-weight: 600;
+        }
+    }
+  }
+  .cardjob{
+      .col{
+          display: flex;
+          border-top: 1px solid #dadbdd;
+          padding-top: 20px;
+          margin-bottom: 24px;
+          img{
+              width: 200px;
+              height: 150px;
+              border-radius: 4px;
+          }
+          .jobItem{
+              padding-left: 20px;
+              padding-right: 10px;
+              h4{
+                  font-size: 18px;
+                  color: #404145;
+                  padding-bottom: 10px;
+              }
+              p{
+                  font-size: 16px;
+                  line-height: 24px;
+                  color: #62646a;
+              }
+              .actions{
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 16px;
+                  .detailAction{
+                      button{
+                          background-color: transparent;
+                          border: 1px solid #1dbf73;
+                          margin-left: 10px;
+                          padding: 5px 12px;
+                          border-radius: 4px;
+                          font-weight: 600;
+                          cursor: pointer;
+                          transition: all .2s linear;
+                          a{
+                              color: #1dbf73;
+                              transition: all .2s linear;
+                          }
+                          &:hover{
+                              background-color: #1dbf73;
+                              a{
+                                  color: #fff;
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
