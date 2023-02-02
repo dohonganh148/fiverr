@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { getJobTypes } from "redux/actions/home";
+import { Dropdown } from "antd";
 
 const menu = [
   {
@@ -22,13 +23,17 @@ const menu = [
     label: "Become a Seller",
     link: "#home",
   },
-  {
-    label: "Sign in",
-    link: "/login",
-  },
 ];
 
 const Header = () => {
+  const items = [
+    {
+      key: "1",
+      label: (
+        <div>Đăng xuất</div>
+      ),
+    },
+  ];
   const [isActive, setIsActive] = useState(true);
   const [showSubMenu, setShowSubMenu] = useState(true);
   const jobTypes = useSelector((state) => state.home.jobTypes);
@@ -98,14 +103,43 @@ const Header = () => {
           </div>
         )}
         <nav className={styles.navbar}>
-          {menu.map((item, index) => (
-            <Link key={index} to={item.link}>
-              {item.label}
+          <div>
+            {menu.map((item, index) => (
+              <Link key={index} to={item.link} className={styles.a}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          <div className={styles.authentication}>
+            <Link to="/profile" className={styles.a}>
+              Sign in
             </Link>
-          ))}
-          <Link to="/signup">
-            <button>Join</button>
-          </Link>
+            <Link to="/signup">
+              <button>Join</button>
+            </Link>
+          </div>
+          <div className={styles.profile}>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) => {
+                if (isActive) return `${styles.authenActive} ${styles.authen}`;
+                return styles.authen;
+              }}
+            >
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottom"
+                arrow
+              >
+                <img
+                  alt=""
+                  src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/profile/photos/3840831/original/P_20160828_073325_LL.jpg"
+                />
+              </Dropdown>
+            </NavLink>
+          </div>
         </nav>
       </div>
 
@@ -113,8 +147,8 @@ const Header = () => {
         <div className={styles.row}>
           {jobTypes?.slice(0, 9)?.map((item, index) => (
             <p key={index}>
-              <Link to={`/category/${item._id}`}>
-                {item.name}
+              <Link to={`/category/${item.id}`}>
+                {item.tenLoaiCongViec}
                 {/* {item?.isNew && <span className={styles.btnNew}>New</span>} */}
               </Link>
             </p>

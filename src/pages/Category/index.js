@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Category.module.scss";
 import { RxTriangleRight } from "react-icons/rx";
 import TypeJobCard from "components/TypeJobCard";
-import { getCategories, getJobsByType } from "services/category";
+import { getJobsByType, getTypeDetail } from "services/category";
 import { Link, useParams } from "react-router-dom";
 const Category = () => {
   const yours = [
@@ -21,18 +21,13 @@ const Category = () => {
   ];
   const params = useParams();
   const [category, setCategory] = useState([]);
-  const [jobs, setJobs] = useState([]);
   const getCategoryList = async () => {
-    let res = await getCategories(params.id);
-    setCategory(res);
+    let res = await getTypeDetail(params.id);
+    setCategory(res.content[0]);
   };
-  const getJobs = async () => {
-    let res = await getJobsByType(params.id);
-    setJobs(res);
-  };
+  
   useEffect(() => {
     getCategoryList();
-    getJobs();
   }, [params.id]);
   return (
     <div className={styles.category}>
@@ -49,20 +44,20 @@ const Category = () => {
         </div>
         <div className={styles.typeJob}>
           <div className={styles.left}>
-            <h4>{category.name}</h4>
+            <h4>{category.tenLoaiCongViec}</h4>
             <div>
-              {category?.subTypeJobs?.map((item, index) => (
-                <Link to={`/joblist?search=${item.name}`} className={styles.item}>
-                  {item.name}
+              {category?.dsNhomChiTietLoai?.map((item, index) => (
+                <Link to={`/joblist?search=${item.tenNhom}`} className={styles.item} >
+                  {item.tenNhom}
                 </Link>
               ))}
             </div>
           </div>
           <div className={styles.right}>
             <div className={styles.row}>
-              {jobs?.map((item, index) => (
+              {category?.dsNhomChiTietLoai?.map((item, index) => (
                 <div className={styles.col}>
-                  <Link to={`/joblist?search=${item.name}`}>
+                  <Link to={`/joblist?search=${item.tenNhom}`}>
                     <TypeJobCard {...item} />
                   </Link>
                 </div>

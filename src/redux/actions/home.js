@@ -1,7 +1,8 @@
 import { getJobs, getTypes } from "../../services/home";
 import ACTION_TYPE from "../type";
-export const getJobList = (data) => async (dispatch) => {
-  let res = await getJobs(data);
+export const getJobList = (data, index) => async (dispatch) => {
+  console.log(data);
+  let res = await getJobs(data, index);
   dispatch({
     type: ACTION_TYPE.GET_JOBS,
     payload: res,

@@ -14,9 +14,9 @@ const Reviews = () => {
   }, [params.id]);
   const getComments = async () => {
     let res = await getReviews(params.id);
-    setComments(res);
-    console.log(res);
+    setComments(res?.content);
   };
+  console.log(comments)
   return (
     <div className={s.reviews}>
       <div className={s.content}>
@@ -101,7 +101,7 @@ const Reviews = () => {
           </div>
           <div className={s.comment}>
             <div>
-              {comments.map((item, index) => (
+              {comments?.map((item, index) => (
                 <CardComment {...item} />
               ))}
             </div>

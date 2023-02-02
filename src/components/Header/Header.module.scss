@@ -24,12 +24,18 @@
       }
     }
     .navbar {
-      a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .a {
         font-size: 16px;
         margin: 0 15px;
         font-weight: bold;
+        display: inline-block;
+        height: 22px;
       }
       button {
+        margin-left: 15px;
         padding: 7px 20px;
         border: 1px solid #fff;
         color: #fff;
@@ -43,6 +49,23 @@
           background-color: #1dbf73;
           border-color: #1dbf73;
         }
+      }
+      .profile{
+        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
+        position: relative;
+        img{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+      .authentication{
+        display: none;
       }
     }
     .form {

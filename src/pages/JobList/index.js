@@ -15,8 +15,8 @@ const JobList = () => {
   const { search } = useLocation();
   const query = new URLSearchParams(search).get("search");
   useEffect(() => {
-    dispatch(getJobList(query));
-  }, [dispatch, query]);
+    dispatch(getJobList(query, current));
+  }, [dispatch, query, current]);
   return (
     <div className={styles.jobList}>
       <Suggest />
@@ -38,19 +38,17 @@ const JobList = () => {
         </div>
         <div className={styles.content}>
           <div className={styles.row}>
-            {jobList
-              ?.slice(0 + 12 * (current - 1), 12 * current)
-              .map((item, index) => (
-                <JobCard {...item} />
-              ))}
+            {jobList?.data?.map((item, index) => (
+              <JobCard {...item} />
+            ))}
           </div>
         </div>
       </div>
       <div className={styles.page}>
         <Pagination
-          defaultCurrent={1}
-          pageSize={12}
-          total={jobList?.length}
+          defaultCurrent={current}
+          pageSize={8}
+          total={jobList?.totalRow}
           onChange={(e) => setCurrent(e)}
         />
       </div>

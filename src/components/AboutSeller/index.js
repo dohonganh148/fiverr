@@ -4,7 +4,8 @@ import { Rate, Collapse } from "antd";
 import { TfiAngleDown, TfiAngleUp } from "react-icons/tfi";
 const { Panel } = Collapse;
 
-const AboutSeller = () => {
+const AboutSeller = (props) => {
+  const { avatar, tenNguoiTao } = props;
   const text = [
     {
       key: "1",
@@ -32,22 +33,25 @@ const AboutSeller = () => {
           <div className={s.avatar}>
             <img
               alt=""
-              src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/profile/photos/3840831/original/P_20160828_073325_LL.jpg"
+              src={
+                avatar ||
+                "https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/profile/photos/3840831/original/P_20160828_073325_LL.jpg"
+              }
             />
             <a href="#home"></a>
           </div>
           <div className={s.infor}>
-            <h4>maverickabhi</h4>
+            <h4>{tenNguoiTao}</h4>
             <p>Fullstack Web Developer, Reactjs, Nextjs ,Nodejs</p>
             <div className={s.rate}>
-            <Rate
+              <Rate
                 disabled
                 style={{ fontSize: 15, fill: "#ffb33e" }}
                 allowHalf
-                defaultValue={5}
+                value={props?.congViec?.saoCongViec}
               />
-              <p className={s.rating}>5</p>
-              <p className={s.comment}>(62)</p>
+              <p className={s.rating}>{props?.congViec?.saoCongViec}</p>
+              <p className={s.comment}>({props?.congViec?.danhGia})</p>
             </div>
             <div className={s.contact}>
               <button>Contact Me</button>

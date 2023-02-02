@@ -2,10 +2,9 @@ import React from 'react';
 import s from "./Signup.module.scss";
 import AuthenWith from "components/AuthenWith";
 import BgAuthen from "images/bgAuthen.jpg";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 
 const Signup = () => {
-  const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
