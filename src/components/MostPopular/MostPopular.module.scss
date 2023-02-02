@@ -1,0 +1,46 @@
+.content {
+  margin: 30px 0;
+  h4 {
+    font-size: 24px;
+    line-height: 130%;
+    margin-bottom: 16px;
+    color: #404145;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #efeff0;
+    border-radius: 12px;
+    box-shadow: 0 0.14px 2.29266px rgb(0 0 0 / 3%),
+      0 0.37px 4.42626px rgb(0 0 0 / 5%), 0 3px 7px rgb(0 0 0 / 9%);
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      margin-right: 12px;
+    }
+    span{
+        color: #404145;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        transition: all .2s linear;
+        svg{
+            width: 20px;
+            height: 20px;
+            color: #404145;
+            margin-left: 12px;
+            transition: all .2s linear;
+        }
+    }
+    &:hover{
+        span{
+            color: #1dbf73;
+            svg{
+                color: #1dbf73;;
+            }
+        }
+    }
+  }
+}

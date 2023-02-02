@@ -4,6 +4,10 @@ import { RxTriangleRight } from "react-icons/rx";
 import TypeJobCard from "components/TypeJobCard";
 import { getJobsByType, getTypeDetail } from "services/category";
 import { Link, useParams } from "react-router-dom";
+import BgCategory from "images/bgCategory.jpg";
+import {BiRightArrowAlt} from "react-icons/bi";
+import MostPopular from "components/MostPopular";
+
 const Category = () => {
   const yours = [
     {
@@ -32,38 +36,54 @@ const Category = () => {
   return (
     <div className={styles.category}>
       <div className={styles.content}>
-        <div className={styles.title}>
-          <h1>{category.name}</h1>
+        <div className={styles.title} style={{backgroundImage: `url(${BgCategory})`}}>
+          <div className={styles.detail}>
+          <h1>{category.tenLoaiCongViec}</h1>
           <p>You think it. A programmer develops it.</p>
           <button className={styles.works}>
             <a href="#home">
               <RxTriangleRight />
-              <p>How Fiverr Works</p>
+              <div>How Fiverr Works</div>
             </a>
           </button>
+          </div>
         </div>
+        <MostPopular />
         <div className={styles.typeJob}>
-          <div className={styles.left}>
-            <h4>{category.tenLoaiCongViec}</h4>
-            <div>
+            <h4>Explore {category.tenLoaiCongViec}</h4>
+            <div className={styles.row}>
+              <div className={styles.col}>
+                <img alt="" src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/431c7d880582a199f5b240dde2694206-1626594004536/Logo%20_%20Brand%20Identity_B_2x.png"/>
+                <h5>Logo & Brand Identity</h5>
+                <ul>
+                  <li>
+                    <a href="#home">Logo Design</a>
+                    <BiRightArrowAlt />
+                  </li>
+                  <li>
+                    <a href="#home">Branch Styles Guides</a>
+                    <BiRightArrowAlt />
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+            {/* <div>
               {category?.dsNhomChiTietLoai?.map((item, index) => (
-                <Link to={`/joblist?search=${item.tenNhom}`} className={styles.item} >
+                <Link to={`/joblist?search=${item.tenNhom}`} className={styles.item} key={index} >
                   {item.tenNhom}
                 </Link>
               ))}
-            </div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.row}>
+            </div> */}
+            {/* <div className={styles.row}>
               {category?.dsNhomChiTietLoai?.map((item, index) => (
-                <div className={styles.col}>
+                <div key={index} className={styles.col}>
                   <Link to={`/joblist?search=${item.tenNhom}`}>
                     <TypeJobCard {...item} />
                   </Link>
                 </div>
               ))}
-            </div>
-          </div>
+            </div> */}
         </div>
       </div>
       <div className={styles.your}>

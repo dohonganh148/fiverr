@@ -169,3 +169,26 @@
     }
   }
 }
+.list{
+  .listItem{
+    margin: 10px 0;
+    h4{
+      color: #404145;
+      padding-bottom: 5px;
+      font-size: 16px;
+    }
+    ul{
+      li{
+        a{
+          color: #62646a;
+          display: block;
+          padding: 2px 0;
+          font-size: 16px;
+          &:hover{
+            color: #1dbf73;
+          }
+        }
+      }
+    }
+  }
+}

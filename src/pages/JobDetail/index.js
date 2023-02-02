@@ -22,9 +22,10 @@ const JobDetail = () => {
   return (
     <div className={styles.jobDetail}>
       {job && (
-        <div className={styles.content}>
-          <div>
-            <Suggest />
+        <div>
+          <Suggest />
+          <div  className={styles.content}>
+            
             <div className={styles.jobDesc}>
               <div>
                 <InforJobDetail {...job} />

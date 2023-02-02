@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./InforJobDetail.module.scss";
 import { Rate } from "antd";
+import {TfiAngleRight} from "react-icons/tfi"
 const InforJobDetail = (props) => {
   const { avatar, tenNguoiTao } = props;
   const btnImg = [
@@ -29,6 +30,11 @@ const InforJobDetail = (props) => {
   return (
     <div className={styles.inforJob}>
       <div className={styles.content}>
+        <div className={styles.header}>
+          <a href="#home">Graphics & Design</a>
+          <TfiAngleRight />
+          <a href="#home">Website Design</a>
+        </div>
         <h1 className={styles.title}>{props?.congViec?.tenCongViec}</h1>
         <div className={styles.profile}>
           <img

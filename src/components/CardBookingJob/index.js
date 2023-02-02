@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { bookJob } from "services/jobDetail";
 import s from "./CardBookingJob.module.scss";
-import {TfiAngleDown} from "react-icons/tfi"
+import {BiTime} from "react-icons/bi";
+import {GrPowerCycle} from "react-icons/gr";
+import {FaCheck} from "react-icons/fa";
 
 const CardBookingJob = () => {
   const params = useParams();
@@ -43,32 +45,53 @@ const CardBookingJob = () => {
         <div className={s.content}>
           <div className={s.info}>
             <div className={s.name}>{currentPlan?.name}</div>
-            <div className={s.price}>$20</div>
+            <div className={s.price}>$100</div>
           </div>
           <div className={s.description}>
             Book a 1 hour session with me and learn HTML, CSS Javascript, React
             Js, Node Js, MongoDB etc
           </div>
           <div className={s.time}>
-            <img alt="" />
-            <div>1 Day Delivery</div>
+            <div className={s.delivery}><BiTime />
+            <p>30 Days Delivery</p></div>
+            <div className={s.revision}>
+              <GrPowerCycle />
+              <p>2 Revisions</p>
+            </div>
           </div>
           <div className={s.properties}>
-            {[1, 2, 3].map((item, index) => (
-              <div className={s.item}>
-                <img alt="" />
-                <div>1 lesson</div>
-              </div>
-            ))}
+            <div className={s.propItem}>
+              <div className={s.active}><FaCheck /></div>
+              <p>Design Customization</p>
+            </div>
+            <div className={s.propItem}>
+              <div><FaCheck /></div>
+              <p>Content Upload</p>
+            </div>
+            <div className={s.propItem}>
+              <div className={s.active}><FaCheck /></div>
+              <p>Responsive Design</p>
+            </div>
+            <div className={s.propItem}>
+              <div className={s.active}><FaCheck /></div>
+              <p>Include Source Code</p>
+            </div>
+            <div className={s.propItem}>
+              <div><FaCheck /></div>
+              <p>1 Page</p>
+            </div>
           </div>
           <button className={s.purchaseBtn} onClick={handlePurchase}>
-            Continue ($20)
+            Continue ($100)
           </button>
-          <div className={s.compare}>Compare Packages</div>
+          <div className={s.compare}>
+            <a href="#home">Compare Packages</a>
+          </div>
         </div>
       </div>
       <div className={s.contact}>
-        <button><p>Contact Seller</p> <TfiAngleDown /></button>
+        <p>Do you help any special requirements?</p>
+        <button>Get a quote</button>
       </div>
     </div>
   );

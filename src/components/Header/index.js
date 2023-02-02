@@ -4,7 +4,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { getJobTypes } from "redux/actions/home";
-import { Dropdown } from "antd";
+import { Dropdown, Space } from "antd";
 
 const menu = [
   {
@@ -29,8 +29,23 @@ const Header = () => {
   const items = [
     {
       key: "1",
+      label: <div>Đăng xuất</div>,
+    },
+  ];
+  const items2 = [
+    {
+      key: "1",
       label: (
-        <div>Đăng xuất</div>
+        <div className={styles.list}>
+          <div className={styles.listItem}>
+            <h4>Logo & Brand Identity</h4>
+            <ul>
+              <li>
+                <a href="#home">Logo Design</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       ),
     },
   ];
@@ -146,12 +161,21 @@ const Header = () => {
       <div className={showSubMenu ? styles.subMenuActive : styles.subMenu}>
         <div className={styles.row}>
           {jobTypes?.slice(0, 9)?.map((item, index) => (
-            <p key={index}>
-              <Link to={`/category/${item.id}`}>
-                {item.tenLoaiCongViec}
-                {/* {item?.isNew && <span className={styles.btnNew}>New</span>} */}
-              </Link>
-            </p>
+            <Space wrap>
+              <Dropdown
+                menu={{
+                  items: items2,
+                }}
+                placement="bottom"
+              >
+                <p key={index}>
+                  <Link to={`/category/${item.id}`}>
+                    {item.tenLoaiCongViec}
+                    {/* {item?.isNew && <span className={styles.btnNew}>New</span>} */}
+                  </Link>
+                </p>
+              </Dropdown>
+            </Space>
           ))}
         </div>
       </div>

@@ -1,5 +1,23 @@
 .inforJob {
   .content {
+    .header{
+      padding-bottom: 10px;
+      a{
+        font-size: 16px;
+        color: #446EE7;
+        line-height: 24px;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+      svg{
+        width: 12px;
+        height: 12px;
+        color: #404145;
+        display: inline-block;
+        margin: 0 8px;
+      }
+    }
     .title {
       font-size: 28px;
       line-height: 130%;
