@@ -1,8 +1,9 @@
 import React from 'react';
 import s from "./MostPopular.module.scss";
 import {BsArrowRightShort} from "react-icons/bs";
+import Slider from "react-slick";
 
-const MostPopular = () => {
+const MostPopular = ({name}) => {
     const items = [
         {
             img: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/97477f04af40de3aa1f8d6aa21f69725-1626179101614/Logo%20design_2x.png",
@@ -41,10 +42,29 @@ const MostPopular = () => {
             text: "NFT Art",
         },
     ]
+
+    function SampleNextArrow(props) {
+        const { className, onClick } = props;
+        return <div className={className} onClick={onClick} />;
+      }
+      function SamplePrevArrow(props) {
+        const { className, onClick } = props;
+        return <div className={className} onClick={onClick} />;
+      }
+    const settings = {
+        lazyLoad: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+      };
   return (
     <div className={s.content}>
-        <h4>Most popular in truyền PROPS</h4>
+        <h4>Most popular in {name}</h4>
         <div className={s.slideList}>
+            <Slider {...settings}>
             {items.map( (item, index) => (
                 <div key={index} className={s.slide}>
                 <a href='#home' className={s.item}>
@@ -53,6 +73,8 @@ const MostPopular = () => {
                 </a>
             </div>
             ))}
+            </Slider>
+            
         </div>
     </div>
   )

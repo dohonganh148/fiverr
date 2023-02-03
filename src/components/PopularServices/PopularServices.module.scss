@@ -1,8 +1,12 @@
 .services {
+  :global(.slick-prev,.slick-next) {
+    left: -8px;
+  }
   .content {
     .col {
       position: relative;
       img {
+        padding: 0 18px;
         width: 100%;
         height: 345px;
         border-radius: 4px;
@@ -15,7 +19,7 @@
       .title {
         position: absolute;
         top: 16px;
-        left: 16px;
+        left: 34px;
         color: #fff;
         p {
           font-size: 14px;

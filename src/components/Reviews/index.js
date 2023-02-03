@@ -16,7 +16,6 @@ const Reviews = () => {
     let res = await getReviews(params.id);
     setComments(res?.content);
   };
-  console.log(comments)
   return (
     <div className={s.reviews}>
       <div className={s.content}>

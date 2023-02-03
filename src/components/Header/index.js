@@ -3,7 +3,7 @@ import styles from "./Header.module.scss";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { getJobTypes } from "redux/actions/home";
+import { getJobListByType, getJobTypes } from "redux/actions/home";
 import { Dropdown, Space } from "antd";
 
 const menu = [
@@ -32,23 +32,7 @@ const Header = () => {
       label: <div>Đăng xuất</div>,
     },
   ];
-  const items2 = [
-    {
-      key: "1",
-      label: (
-        <div className={styles.list}>
-          <div className={styles.listItem}>
-            <h4>Logo & Brand Identity</h4>
-            <ul>
-              <li>
-                <a href="#home">Logo Design</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      ),
-    },
-  ];
+
   const [isActive, setIsActive] = useState(true);
   const [showSubMenu, setShowSubMenu] = useState(true);
   const jobTypes = useSelector((state) => state.home.jobTypes);
@@ -63,7 +47,11 @@ const Header = () => {
   const query = new URLSearchParams(search).get("search");
   useEffect(() => {
     dispatch(getJobTypes());
-    setSearchData(query);
+    if (query) {
+      setSearchData(query);
+    } else {
+      setSearchData("");
+    }
   }, [dispatch, query]);
   useEffect(() => {
     if (pathname === "/") {
@@ -91,6 +79,35 @@ const Header = () => {
   const [searchData, setSearchData] = useState();
   const handleSearch = () => {
     navigate(`/joblist?search=${searchData}`);
+  };
+  const handleSearchByType = (id) => {
+    dispatch(getJobListByType(id));
+  };
+  const getMenu = (category) => {
+    return category?.map((item, index) => {
+      return {
+        key: "1",
+        label: (
+          <div className={styles.list}>
+            <div className={styles.listItem}>
+              <h4>{item?.tenNhom}</h4>
+              <ul>
+                {item?.dsChiTietLoai?.map((it, id) => (
+                  <li>
+                    <Link
+                      to="/joblist"
+                      onClick={() => handleSearchByType(it.id)}
+                    >
+                      {it.tenChiTiet}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ),
+      };
+    });
   };
   return (
     <div
@@ -164,7 +181,7 @@ const Header = () => {
             <Space wrap>
               <Dropdown
                 menu={{
-                  items: items2,
+                  items: getMenu(item?.dsNhomChiTietLoai),
                 }}
                 placement="bottom"
               >

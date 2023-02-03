@@ -6,12 +6,10 @@ import { Link } from "react-router-dom";
 
 const JobCard = (props) => {
   const {
-    hinhAnh,
-    giaTien,
-    danhGia,
-    tenCongViec,
-    saoCongViec,
-    maChiTietLoaiCongViec,
+    id,
+    avatar,
+    congViec,
+    tenNguoiTao
   } = props;
   const item1 = [
     {
@@ -31,11 +29,11 @@ const JobCard = (props) => {
     <div className={styles.jobCard}>
       <div className={styles.content}>
         <div className={styles.image}>
-          <Link to={`/jobdetail/${maChiTietLoaiCongViec}}`}>
+          <Link to={`/jobdetail/${id}`}>
             <img
               alt=""
               src={
-                hinhAnh ||
+                congViec?.hinhAnh ||
                 "https://fiverr-res.cloudinary.com/t_gig_cards_web_x2,q_auto,f_auto/gigs/3763945/original/Untitled-1.jpg"
               }
             />
@@ -47,13 +45,14 @@ const JobCard = (props) => {
               <img
                 alt=""
                 src={
+                  avatar ||
                   "https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/profile/photos/3840831/original/P_20160828_073325_LL.jpg"
                 }
               />
             </div>
             <div className={styles.name}>
               <div>
-                <Link to="/profile">Moon</Link>
+                <Link to="/profile">{tenNguoiTao}</Link>
               </div>
               <Dropdown
                 menu={{
@@ -67,16 +66,16 @@ const JobCard = (props) => {
             </div>
           </div>
           <h3>
-            <Link to={`/jobdetail/${maChiTietLoaiCongViec}`}>
-              {tenCongViec}
+            <Link to={`/jobdetail/${id}`}>
+              {congViec?.tenCongViec}
             </Link>
           </h3>
           <div className={styles.infor}>
             <div className={styles.star}>
               <FaStar />
-              <p>{saoCongViec}</p>
+              <p>{congViec?.saoCongViec}</p>
             </div>
-            <p>({danhGia}+)</p>
+            <p>({congViec?.danhGia}+)</p>
           </div>
         </div>
         <footer className={styles.footer}>
@@ -91,7 +90,7 @@ const JobCard = (props) => {
           </Dropdown>
           <div className={styles.starting}>
             <p className={styles.small}>STARTING AT</p>
-            <p className={styles.big}>${giaTien}</p>
+            <p className={styles.big}>${congViec?.giaTien}</p>
           </div>
         </footer>
       </div>

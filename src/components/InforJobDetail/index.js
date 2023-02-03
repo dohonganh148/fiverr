@@ -3,7 +3,7 @@ import styles from "./InforJobDetail.module.scss";
 import { Rate } from "antd";
 import {TfiAngleRight} from "react-icons/tfi"
 const InforJobDetail = (props) => {
-  const { avatar, tenNguoiTao } = props;
+  const { avatar, tenNguoiTao, tenLoaiCongViec, tenNhomChiTietLoai, tenChiTietLoai } = props;
   const btnImg = [
     {
       key: 1,
@@ -31,9 +31,11 @@ const InforJobDetail = (props) => {
     <div className={styles.inforJob}>
       <div className={styles.content}>
         <div className={styles.header}>
-          <a href="#home">Graphics & Design</a>
+          <a href>{tenLoaiCongViec}</a>
           <TfiAngleRight />
-          <a href="#home">Website Design</a>
+          <a href>{tenNhomChiTietLoai}</a>
+          <TfiAngleRight />
+          <a href>{tenChiTietLoai}</a>
         </div>
         <h1 className={styles.title}>{props?.congViec?.tenCongViec}</h1>
         <div className={styles.profile}>
@@ -45,7 +47,7 @@ const InforJobDetail = (props) => {
               "https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/profile/photos/3840831/original/P_20160828_073325_LL.jpg"
             }
           />
-          <a href="#home" className={styles.name}>
+          <a href className={styles.name}>
             {tenNguoiTao}
           </a>
           <p>Level 2 Seller</p>

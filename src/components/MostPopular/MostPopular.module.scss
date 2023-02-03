@@ -1,10 +1,14 @@
 .content {
   margin: 30px 0;
+  position: relative;
   h4 {
     font-size: 24px;
     line-height: 130%;
     margin-bottom: 16px;
     color: #404145;
+  }
+  .slide{
+    padding: 0 10px;
   }
   .item {
     display: flex;
@@ -43,4 +47,9 @@
         }
     }
   }
+  :global(.slick-arrow) {
+    width: 40px;
+    height: 40px;
+  }
+  
 }

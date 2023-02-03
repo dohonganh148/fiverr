@@ -15,6 +15,11 @@ const homeReducer = (state = initialState, { type, payload }) => {
         ...state,
         jobTypes: payload,
       };
+    case ACTION_TYPE.GET_JOBS_BY_TYPE:
+      return {
+        ...state,
+        jobs: payload,
+      };
     default:
       return { ...state };
   }
