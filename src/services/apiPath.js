@@ -7,7 +7,9 @@ const apiPath = {
   GET_JOB_DETAIL: "/api/cong-viec/lay-cong-viec-chi-tiet",
   BOOK_JOB: "/api/jobs/booking",
   GET_HIRED_JOB: "/api/thue-cong-viec/lay-danh-sach-da-thue",
-  LOGIN: "/api/auth/signin"
+  LOGIN: "/api/auth/signin",
+  SIGN_UP: "/api/auth/signup",
+  GET_USER: "/api/users",
 };
 
 export default apiPath;

@@ -3,10 +3,18 @@ import s from "./Login.module.scss";
 import AuthenWith from "components/AuthenWith";
 import BgAuthen from "images/bgAuthen.jpg";
 import { Button, Checkbox, Form, Input } from "antd";
+import { login } from "services/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
+    let res = await login(values);
+    if (res.statusCode === 200) {
+      localStorage.setItem("token", res?.content?.token);
+      localStorage.setItem("id", res?.content?.user?.id);
+      navigate("/");
+    }
   };
   return (
     <div className={s.authen} style={{ backgroundImage: `url(${BgAuthen})` }}>
@@ -23,7 +31,7 @@ const Login = () => {
             onFinish={onFinish}
           >
             <Form.Item
-              name="taiKhoan"
+              name="email"
               rules={[
                 {
                   required: true,
@@ -34,7 +42,7 @@ const Login = () => {
               <Input placeholder="Username" />
             </Form.Item>
             <Form.Item
-              name="matKhau"
+              name="password"
               rules={[
                 {
                   required: true,
@@ -44,25 +52,25 @@ const Login = () => {
             >
               <Input type="password" placeholder="Password" />
             </Form.Item>
-            <Form.Item>
+            {/* <Form.Item>
               <Form.Item name="remember" valuePropName="checked" noStyle style={{display: "block"}}>
                 <Checkbox>Remember me</Checkbox>
               </Form.Item>
               <a className="login-form-forgot" href="#home" style={{color:"#19a463"}}>
                 Forgot password
               </a>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item>
               <Button type="primary" htmlType="submit" className={s.continue}>
-                <a href="#home">Continue</a>
+                Continue
               </Button>
             </Form.Item>
           </Form>
         </div>
         <div className={s.footer}>
           <p>
-            Not a member yet? <a href="#home">Join now</a>
+            Not a member yet? <a href="/signup">Join now</a>
           </p>
         </div>
       </div>

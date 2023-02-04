@@ -5,7 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { getJobListByType, getJobTypes } from "redux/actions/home";
 import { Dropdown, Space } from "antd";
-
+import { logOut } from "redux/actions/auth";
 const menu = [
   {
     label: "Fiverr Business",
@@ -26,17 +26,11 @@ const menu = [
 ];
 
 const Header = () => {
-  const items = [
-    {
-      key: "1",
-      label: <div>Đăng xuất</div>,
-    },
-  ];
-
   const [isActive, setIsActive] = useState(true);
   const [showSubMenu, setShowSubMenu] = useState(true);
   const jobTypes = useSelector((state) => state.home.jobTypes);
   const dispatch = useDispatch();
+
   useEffect(() => {
     window.addEventListener("scroll", changeStyle);
     return () => {
@@ -45,6 +39,18 @@ const Header = () => {
   });
   const { search, pathname } = useLocation();
   const query = new URLSearchParams(search).get("search");
+  const token = localStorage.getItem("token");
+  const handleLogOut = () => {
+    dispatch(logOut());
+    window.location.reload()
+  };
+  const items = [
+    {
+      key: "1",
+      label: <div onClick={handleLogOut}>Đăng xuất</div>,
+    },
+  ];
+
   useEffect(() => {
     dispatch(getJobTypes());
     if (query) {
@@ -142,36 +148,40 @@ const Header = () => {
               </Link>
             ))}
           </div>
-          <div className={styles.authentication}>
-            <Link to="/profile" className={styles.a}>
-              Sign in
-            </Link>
-            <Link to="/signup">
-              <button>Join</button>
-            </Link>
-          </div>
-          <div className={styles.profile}>
-            <NavLink
-              to="/profile"
-              className={({ isActive }) => {
-                if (isActive) return `${styles.authenActive} ${styles.authen}`;
-                return styles.authen;
-              }}
-            >
-              <Dropdown
-                menu={{
-                  items,
+          {token ? (
+            <div className={styles.profile}>
+              <NavLink
+                to="/profile"
+                className={({ isActive }) => {
+                  if (isActive)
+                    return `${styles.authenActive} ${styles.authen}`;
+                  return styles.authen;
                 }}
-                placement="bottom"
-                arrow
               >
-                <img
-                  alt=""
-                  src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/profile/photos/3840831/original/P_20160828_073325_LL.jpg"
-                />
-              </Dropdown>
-            </NavLink>
-          </div>
+                <Dropdown
+                  menu={{
+                    items,
+                  }}
+                  placement="bottom"
+                  arrow
+                >
+                  <img
+                    alt=""
+                    src="https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png"
+                  />
+                </Dropdown>
+              </NavLink>
+            </div>
+          ) : (
+            <div className={styles.authentication}>
+              <Link to="/logIn" className={styles.a}>
+                Sign in
+              </Link>
+              <Link to="/signup">
+                <button>Join</button>
+              </Link>
+            </div>
+          )}
         </nav>
       </div>
 

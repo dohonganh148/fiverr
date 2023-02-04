@@ -5,7 +5,8 @@ import { BsDot, BsPencil } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 
-const CardProfile = () => {
+const CardProfile = (props) => {
+  const { name, avatar } = props;
   return (
     <div className={s.cardProfile}>
       <div className={s.infor}>
@@ -15,7 +16,10 @@ const CardProfile = () => {
           </div>
           <img
             alt=""
-            src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/79112d1963943d20dab38649b848ad6a-1512729528028/bdf1e4db-c8b1-47ee-a20c-442b6f8a374a.jpg"
+            src={
+              avatar ||
+              "https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png"
+            }
           />
           <div>
             <button>
@@ -25,11 +29,9 @@ const CardProfile = () => {
           </div>
         </div>
         <div className={s.name}>
-          <h3>
-          <a href="#home">mzaeempakistan</a>
-          </h3>
+          <h3>{name}</h3>
           <div>
-          <BsPencil />
+            <BsPencil />
           </div>
           <button className="btnGreen">
             <a href="#home">Contact Me</a>
@@ -48,7 +50,7 @@ const CardProfile = () => {
               <FaUser />
               <p>Member since</p>
             </div>
-            <p  className={s.colRight}>May 2020</p>
+            <p className={s.colRight}>May 2020</p>
           </div>
         </div>
       </div>
@@ -58,17 +60,24 @@ const CardProfile = () => {
             <h3>Description</h3>
             <button>Edit Description</button>
           </div>
-          <p>Greetings, I am Muhammad Zaeem I have a lot of experience in web development and SEO. I am here to deliver good quality services to my clients to satisfy them. Please feel free to discuss the project. Thanks :)</p>
+          <p>
+            Greetings, I am Muhammad Zaeem I have a lot of experience in web
+            development and SEO. I am here to deliver good quality services to
+            my clients to satisfy them. Please feel free to discuss the project.
+            Thanks :)
+          </p>
         </div>
         <div className={s.language}>
-        <div className={s.title}>
+          <div className={s.title}>
             <h3>Languages</h3>
             <button>Add new</button>
           </div>
-          <p>English - <span>Basic</span></p>
+          <p>
+            English - <span>Basic</span>
+          </p>
         </div>
         <div className={s.linkAccount}>
-        <div className={s.title}>
+          <div className={s.title}>
             <h3>Link Account</h3>
             <button>Add new</button>
           </div>
@@ -80,7 +89,7 @@ const CardProfile = () => {
           </div>
         </div>
         <div className={s.skills}>
-        <div className={s.title}>
+          <div className={s.title}>
             <h3>Skills</h3>
             <button>Add new</button>
           </div>
@@ -94,14 +103,14 @@ const CardProfile = () => {
           </div>
         </div>
         <div className={s.education}>
-        <div className={s.title}>
+          <div className={s.title}>
             <h3>Education</h3>
             <button>Add new</button>
           </div>
           <p>Add your Education</p>
         </div>
         <div className={s.certification}>
-        <div className={s.title}>
+          <div className={s.title}>
             <h3>Certification</h3>
             <button>Add new</button>
           </div>

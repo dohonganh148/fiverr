@@ -1,4 +1,4 @@
-import { login, signup } from "../../services/auth";
+import { getUser, login, signup } from "../../services/auth";
 import ACTION_TYPE from "../type";
 export const loginAction = (data) => async (dispatch) => {
   let res = await login(data);
@@ -14,3 +14,18 @@ export const signUpAction = (data) => async (dispatch) => {
     payload: res,
   });
 };
+export const getProfile = (id) => async (dispatch) => {
+  let res = await getUser(id);
+  dispatch({
+    type: ACTION_TYPE.GET_PROFILE,
+    payload: res,
+  });
+};
+export const logOut = () => async (dispatch) => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("id")
+    dispatch({
+      type: ACTION_TYPE.LOG_OUT,
+    });
+  };
+  

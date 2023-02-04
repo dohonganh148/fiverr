@@ -3,10 +3,21 @@ import s from "./Signup.module.scss";
 import AuthenWith from "components/AuthenWith";
 import BgAuthen from "images/bgAuthen.jpg";
 import { Button, Form, Input } from "antd";
-
+import {signup} from 'services/auth'
+import { useNavigate } from 'react-router-dom';
 const Signup = () => {
-  const onFinish = (values) => {
+  const navigate = useNavigate()
+  const onFinish = async(values) => {
     console.log('Received values of form: ', values);
+      try{
+        let res = await signup(values);
+        console.log(res)
+        if (res.statusCode === 200) {
+          navigate("/login");
+        }
+      } catch(err) {
+        console.log(err)
+      }
   };
   return (
     <div className={s.authen} style={{backgroundImage: `url(${BgAuthen})`}}>
@@ -22,7 +33,7 @@ const Signup = () => {
           onFinish={onFinish}
         >
           <Form.Item
-            name="taiKhoan"
+            name="name"
             rules={[
               {
                 required: true,
@@ -34,7 +45,7 @@ const Signup = () => {
           </Form.Item>
 
           <Form.Item
-            name="matKhau"
+            name="password"
             rules={[
               {
                 required: true,
@@ -50,8 +61,8 @@ const Signup = () => {
           </Form.Item>
 
           <Form.Item
-            name="nhapLaiMatKhau"
-            dependencies={["matKhau"]}
+            name="rePassword"
+            dependencies={["password"]}
             rules={[
               {
                 required: true,
@@ -59,7 +70,7 @@ const Signup = () => {
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
-                  if (!value || getFieldValue("matKhau") === value) {
+                  if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
                   }
                   return Promise.reject(new Error("Mật khẩu không khớp !"));
@@ -71,18 +82,7 @@ const Signup = () => {
           </Form.Item>
 
           <Form.Item
-            name="hoTen"
-            rules={[
-              {
-                required: true,
-                message: "Vui lòng nhập Họ tên!",
-              },
-            ]}
-          >
-            <Input  placeholder="Enter fullname"/>
-          </Form.Item>
-          <Form.Item
-            name="soDt"
+            name="phone"
             rules={[
               {
                 required: true,
@@ -119,7 +119,7 @@ const Signup = () => {
         </div>
         <p className={s.agree}>By joining I agree to receive emails from Fiverr.</p>
         <div className={s.footer}>
-          <p>Already a member? <a href='#home'>Sign In</a></p>
+          <p>Already a member? <a href='/login'>Sign In</a></p>
         </div>
       </div>
     </div>

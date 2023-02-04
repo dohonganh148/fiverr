@@ -2,6 +2,7 @@ import ACTION_TYPE from "../type";
 const initialState = {
   jobs: [],
   jobTypes: [],
+  profile: {},
 };
 const homeReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -19,6 +20,16 @@ const homeReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         jobs: payload,
+      };
+    case ACTION_TYPE.GET_PROFILE:
+      return {
+        ...state,
+        profile: payload,
+      };
+    case ACTION_TYPE.LOG_OUT:
+      return {
+        ...state,
+        profile: {},
       };
     default:
       return { ...state };
