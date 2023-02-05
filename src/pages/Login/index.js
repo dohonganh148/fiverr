@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Login.module.scss";
 import AuthenWith from "components/AuthenWith";
 import BgAuthen from "images/bgAuthen.jpg";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import { login } from "services/auth";
 import { useNavigate } from "react-router-dom";
 

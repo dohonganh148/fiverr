@@ -1,4 +1,10 @@
-import { getUser, login, signup } from "../../services/auth";
+import {
+  getUser,
+  login,
+  signup,
+  updateUser,
+  uploadAvatar,
+} from "../../services/auth";
 import ACTION_TYPE from "../type";
 export const loginAction = (data) => async (dispatch) => {
   let res = await login(data);
@@ -21,11 +27,18 @@ export const getProfile = (id) => async (dispatch) => {
     payload: res,
   });
 };
+export const updateProfile = (params, id) => async (dispatch) => {
+  await updateUser(params, id);
+  dispatch(getProfile(id));
+};
+export const uploadUserAvatar = (params, id) => async (dispatch) => {
+  await uploadAvatar(params, id);
+  dispatch(getProfile(id));
+};
 export const logOut = () => async (dispatch) => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("id")
-    dispatch({
-      type: ACTION_TYPE.LOG_OUT,
-    });
-  };
-  
+  localStorage.removeItem("token");
+  localStorage.removeItem("id");
+  dispatch({
+    type: ACTION_TYPE.LOG_OUT,
+  });
+};

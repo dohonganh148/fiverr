@@ -18,3 +18,15 @@ export const getUser = async (id) => {
     return res.data.content;
   }
 };
+export const updateUser = async (params, id) => {
+  let res = await requester.put(`${apiPath.GET_USER}/${id}`, params);
+  if (res.data) {
+    return res.data.content;
+  }
+};
+export const uploadAvatar = async (params) => {
+  let res = await requester.post(`${apiPath.GET_USER}/upload-avatar`, params);
+  if (res.data) {
+    return res.data.content;
+  }
+};

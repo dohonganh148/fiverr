@@ -26,6 +26,11 @@ const homeReducer = (state = initialState, { type, payload }) => {
         ...state,
         profile: payload,
       };
+    case ACTION_TYPE.UPDATE_PROFILE:
+      return {
+        ...state,
+        profile: payload,
+      };
     case ACTION_TYPE.LOG_OUT:
       return {
         ...state,

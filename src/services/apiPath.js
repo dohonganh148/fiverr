@@ -10,6 +10,7 @@ const apiPath = {
   LOGIN: "/api/auth/signin",
   SIGN_UP: "/api/auth/signup",
   GET_USER: "/api/users",
+
 };
 
 export default apiPath;
