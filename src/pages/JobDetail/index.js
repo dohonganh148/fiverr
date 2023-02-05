@@ -34,7 +34,7 @@ const JobDetail = () => {
                 <Reviews />
               </div>
               <div>
-                <CardBookingJob />
+                <CardBookingJob {...job}/>
               </div>
             </div>
           </div>

@@ -174,7 +174,7 @@ const Header = () => {
             </div>
           ) : (
             <div className={styles.authentication}>
-              <Link to="/logIn" className={styles.a}>
+              <Link to="/login" className={styles.a}>
                 Sign in
               </Link>
               <Link to="/signup">

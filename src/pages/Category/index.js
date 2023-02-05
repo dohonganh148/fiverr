@@ -7,6 +7,8 @@ import { Link, useParams } from "react-router-dom";
 import BgCategory from "images/bgCategory.jpg";
 import { BiRightArrowAlt } from "react-icons/bi";
 import MostPopular from "components/MostPopular";
+import { useDispatch } from "react-redux";
+import { getJobListByType } from "redux/actions/home";
 
 const Category = () => {
   const yours = [
@@ -25,11 +27,14 @@ const Category = () => {
   ];
   const params = useParams();
   const [category, setCategory] = useState([]);
+  const dispatch = useDispatch();
   const getCategoryList = async () => {
     let res = await getTypeDetail(params.id);
     setCategory(res.content[0]);
   };
-
+  const handleSearchByType = (id) => {
+    dispatch(getJobListByType(id));
+  };
   useEffect(() => {
     getCategoryList();
   }, [params.id]);
@@ -67,31 +72,20 @@ const Category = () => {
                 <h5>{item.tenNhom}</h5>
                 <ul>
                   {item?.dsChiTietLoai?.map((it, id) => (
-                    <li>
-                      <a href="#home">{it?.tenChiTiet}</a>
-                      <BiRightArrowAlt />
-                    </li>
+                    <Link
+                      to="/joblist"
+                      onClick={() => handleSearchByType(it.id)}
+                    >
+                      <li key={id}>
+                        {it?.tenChiTiet}
+                        <BiRightArrowAlt />
+                      </li>
+                    </Link>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
-          {/* <div>
-              {category?.dsNhomChiTietLoai?.map((item, index) => (
-                <Link to={`/joblist?search=${item.tenNhom}`} className={styles.item} key={index} >
-                  {item.tenNhom}
-                </Link>
-              ))}
-            </div> */}
-          {/* <div className={styles.row}>
-              {category?.dsNhomChiTietLoai?.map((item, index) => (
-                <div key={index} className={styles.col}>
-                  <Link to={`/joblist?search=${item.tenNhom}`}>
-                    <TypeJobCard {...item} />
-                  </Link>
-                </div>
-              ))}
-            </div> */}
         </div>
       </div>
       <div className={styles.your}>

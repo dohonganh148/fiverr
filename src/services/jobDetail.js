@@ -7,8 +7,8 @@ export const getReviews = async (id) => {
   }
 };
 
-export const bookJob = async (id) => {
-  let res = await requester.patch(`${apiPath.BOOK_JOB}/${id}`);
+export const bookJob = async (params) => {
+  let res = await requester.post(`${apiPath.BOOK_JOB}`, params);
   if (res.data) {
     return res.data;
   }

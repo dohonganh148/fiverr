@@ -5,7 +5,7 @@ const apiPath = {
   GET_JOBS_BY_TYPE: "/api/cong-viec/lay-cong-viec-theo-chi-tiet-loai",
   GET_REVIEWS: "/api/binh-luan/lay-binh-luan-theo-cong-viec",
   GET_JOB_DETAIL: "/api/cong-viec/lay-cong-viec-chi-tiet",
-  BOOK_JOB: "/api/jobs/booking",
+  BOOK_JOB: "/api/thue-cong-viec",
   GET_HIRED_JOB: "/api/thue-cong-viec/lay-danh-sach-da-thue",
   LOGIN: "/api/auth/signin",
   SIGN_UP: "/api/auth/signup",
